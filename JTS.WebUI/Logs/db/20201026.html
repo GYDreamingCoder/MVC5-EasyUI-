@@ -1,0 +1,163 @@
+
+【时间】：2020-10-26 10:48:37,086 [线程ID:1 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select name from dbo.sysobjects where id = object_id(N'[dbo].[fun_getPY]') and xtype in (N'FN', N'IF', N'TF') 
+ <HR Size=1>
+【时间】：2020-10-26 10:48:37,163 [线程ID:1 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select name from dbo.sysobjects where id = object_id(N'[dbo].[fun_getPY]') and xtype in (N'FN', N'IF', N'TF') 
+ <HR Size=1>
+【时间】：2020-10-26 10:48:41,048 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select Base_User.* from Base_User where  UserCode =  'sysadmin'and Password =  '202cb962ac59075b964b07152d234b70'and Enabled =  '1'and IsAudit =  '1' 
+ <HR Size=1>
+【时间】：2020-10-26 10:48:41,056 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select Base_User.* from Base_User where  UserCode =  'sysadmin'and Password =  '202cb962ac59075b964b07152d234b70'and Enabled =  '1'and IsAudit =  '1' 
+ <HR Size=1>
+【时间】：2020-10-26 10:48:41,143 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：insert into Base_SysLog([LogType],[LogObject],[LogAction],[LogIP],[LogIPCity],[LogDesc]) values(@LogType,@LogObject,@LogAction,@LogIP,@LogIPCity,@LogDesc);select SCOPE_IDENTITY() 
+ <HR Size=1>
+【时间】：2020-10-26 10:48:41,149 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：insert into Base_SysLog([LogType],[LogObject],[LogAction],[LogIP],[LogIPCity],[LogDesc]) values('1','Base_User','用户登录','171.43.159.11','湖北省[420000]','用户姓名：超级管理员，用户编号：8001，登录账号：sysadmin，登录密码：202cb962ac59075b964b07152d234b70');select SCOPE_IDENTITY() 
+ <HR Size=1>
+【时间】：2020-10-26 10:49:16,563 [线程ID:6 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_menu' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_menu' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:49:16,565 [线程ID:6 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_menu' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_menu' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:49:29,608 [线程ID:10 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_coderule' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_coderule' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:49:29,610 [线程ID:10 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_coderule' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_coderule' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:49:30,697 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:49:30,699 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:49:33,911 [线程ID:8 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_sysparam' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_sysparam' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:49:33,912 [线程ID:8 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_sysparam' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_sysparam' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:49:34,176 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:49:34,177 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:50:18,687 [线程ID:10 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_button' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_button' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:50:18,689 [线程ID:10 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_button' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_button' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:50:18,957 [线程ID:9 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:50:18,958 [线程ID:9 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:50:20,775 [线程ID:9 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_role' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_role' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:50:20,777 [线程ID:9 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_role' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_role' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:50:24,106 [线程ID:8 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:50:24,107 [线程ID:8 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:50:26,032 [线程ID:9 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_user' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_user' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:50:26,033 [线程ID:9 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_user' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_user' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:50:27,503 [线程ID:9 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:50:27,504 [线程ID:9 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:50:59,510 [线程ID:11 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:50:59,511 [线程ID:11 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:01,926 [线程ID:11 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_dict' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_dict' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:01,927 [线程ID:11 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_dict' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_dict' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:05,895 [线程ID:10 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:06,267 [线程ID:8 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:06,716 [线程ID:11 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:07,102 [线程ID:6 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:07,586 [线程ID:9 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:07,724 [线程ID:9 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:07,723 [线程ID:10 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:07,724 [线程ID:6 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:07,723 [线程ID:8 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:07,724 [线程ID:11 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:08,863 [线程ID:6 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:08,864 [线程ID:6 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:09,252 [线程ID:12 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:09,252 [线程ID:12 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:09,882 [线程ID:11 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:09,883 [线程ID:11 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:19,735 [线程ID:9 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='dev_database' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='dev_database' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:19,737 [线程ID:9 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='dev_database' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='dev_database' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:19,947 [线程ID:12 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select * from sys_table order by TableName asc 
+ <HR Size=1>
+【时间】：2020-10-26 10:51:19,948 [线程ID:12 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select * from sys_table order by TableName asc 
+ <HR Size=1>
+【时间】：2020-10-26 10:53:59,516 [线程ID:1 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select name from dbo.sysobjects where id = object_id(N'[dbo].[fun_getPY]') and xtype in (N'FN', N'IF', N'TF') 
+ <HR Size=1>
+【时间】：2020-10-26 10:54:00,429 [线程ID:1 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select name from dbo.sysobjects where id = object_id(N'[dbo].[fun_getPY]') and xtype in (N'FN', N'IF', N'TF') 
+ <HR Size=1>

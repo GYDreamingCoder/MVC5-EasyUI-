@@ -1,0 +1,79 @@
+
+【时间】：2019-03-08 17:20:51,262 [线程ID:1 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select name from dbo.sysobjects where id = object_id(N'[dbo].[fun_getPY]') and xtype in (N'FN', N'IF', N'TF') 
+ <HR Size=1>
+【时间】：2019-03-08 17:20:51,385 [线程ID:1 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select name from dbo.sysobjects where id = object_id(N'[dbo].[fun_getPY]') and xtype in (N'FN', N'IF', N'TF') 
+ <HR Size=1>
+【时间】：2019-03-08 17:20:56,391 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select Base_User.* from Base_User where  UserCode =  'sysadmin'and Password =  '202cb962ac59075b964b07152d234b70'and Enabled =  '1'and IsAudit =  '1' 
+ <HR Size=1>
+【时间】：2019-03-08 17:20:56,400 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select Base_User.* from Base_User where  UserCode =  'sysadmin'and Password =  '202cb962ac59075b964b07152d234b70'and Enabled =  '1'and IsAudit =  '1' 
+ <HR Size=1>
+【时间】：2019-03-08 17:20:56,665 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：insert into Base_SysLog([LogType],[LogObject],[LogAction],[LogIP],[LogIPCity],[LogDesc]) values(@LogType,@LogObject,@LogAction,@LogIP,@LogIPCity,@LogDesc);select SCOPE_IDENTITY() 
+ <HR Size=1>
+【时间】：2019-03-08 17:20:56,667 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：insert into Base_SysLog([LogType],[LogObject],[LogAction],[LogIP],[LogIPCity],[LogDesc]) values('1','Base_User','用户登录','172.96.210.148','国内未能识别的地区[88]','用户姓名：超级管理员，用户编号：8001，登录账号：sysadmin，登录密码：202cb962ac59075b964b07152d234b70');select SCOPE_IDENTITY() 
+ <HR Size=1>
+【时间】：2019-03-08 17:21:45,142 [线程ID:6 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_sysparam' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_sysparam' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2019-03-08 17:21:45,143 [线程ID:6 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_sysparam' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_sysparam' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2019-03-08 17:21:46,182 [线程ID:8 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2019-03-08 17:21:46,185 [线程ID:8 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2019-03-08 17:21:48,447 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_user' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_user' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2019-03-08 17:21:48,455 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_user' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_user' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2019-03-08 17:21:49,756 [线程ID:8 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2019-03-08 17:21:49,757 [线程ID:8 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2019-03-08 17:22:09,929 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：insert into Base_SysLog([LogType],[LogObject],[LogAction],[LogIP],[LogIPCity],[LogDesc]) values(@LogType,@LogObject,@LogAction,@LogIP,@LogIPCity,@LogDesc);select SCOPE_IDENTITY() 
+ <HR Size=1>
+【时间】：2019-03-08 17:22:09,929 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：insert into Base_SysLog([LogType],[LogObject],[LogAction],[LogIP],[LogIPCity],[LogDesc]) values('1','Base_User','用户登出','','','用户姓名：超级管理员，用户编号：8001，登录账号：sysadmin，登录密码：202cb962ac59075b964b07152d234b70');select SCOPE_IDENTITY() 
+ <HR Size=1>
+【时间】：2019-03-08 21:04:57,994 [线程ID:1 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select name from dbo.sysobjects where id = object_id(N'[dbo].[fun_getPY]') and xtype in (N'FN', N'IF', N'TF') 
+ <HR Size=1>
+【时间】：2019-03-08 21:04:58,127 [线程ID:1 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select name from dbo.sysobjects where id = object_id(N'[dbo].[fun_getPY]') and xtype in (N'FN', N'IF', N'TF') 
+ <HR Size=1>
+【时间】：2019-03-08 21:08:38,176 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select Base_User.* from Base_User where  UserCode =  'sysadmin'and Password =  '202cb962ac59075b964b07152d234b70'and Enabled =  '1'and IsAudit =  '1' 
+ <HR Size=1>
+【时间】：2019-03-08 21:08:38,180 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：select Base_User.* from Base_User where  UserCode =  'sysadmin'and Password =  '202cb962ac59075b964b07152d234b70'and Enabled =  '1'and IsAudit =  '1' 
+ <HR Size=1>
+【时间】：2019-03-08 21:08:38,387 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：insert into Base_SysLog([LogType],[LogObject],[LogAction],[LogIP],[LogIPCity],[LogDesc]) values(@LogType,@LogObject,@LogAction,@LogIP,@LogIPCity,@LogDesc);select SCOPE_IDENTITY() 
+ <HR Size=1>
+【时间】：2019-03-08 21:08:38,392 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：insert into Base_SysLog([LogType],[LogObject],[LogAction],[LogIP],[LogIPCity],[LogDesc]) values('1','Base_User','用户登录','125.77.39.46','福建省福州市[350100]','用户姓名：超级管理员，用户编号：8001，登录账号：sysadmin，登录密码：202cb962ac59075b964b07152d234b70');select SCOPE_IDENTITY() 
+ <HR Size=1>
+【时间】：2019-03-08 21:09:28,267 [线程ID:9 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_role' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_role' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2019-03-08 21:09:28,268 [线程ID:9 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句： select a.ButtonCode,(case  b.ButtonText when '' then a.ButtonName else b.ButtonText end) as ButtonName,b.ButtonSort as Sort,a.ButtonType,a.IconClass,a.JsEvent  from  Base_Button a  join Base_MenuButton b on a.ButtonCode=b.ButtonCode and b.MenuCode='sys_role' where a.[Enabled]=1 and a.ButtonCode in ( select DISTINCT ButtonCode from Base_RoleMenuButton where MenuCode='sys_role' and RoleCode in(select RoleCode from Base_UserRole where UserId=8001) ) order by b.ButtonSort 
+ <HR Size=1>
+【时间】：2019-03-08 21:09:34,360 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>
+【时间】：2019-03-08 21:09:34,360 [线程ID:7 级别:INFO 对象:logdb  行号:71 ]  <BR>
+【消息】：DbExecuting执行sql语句：com_pagination_fluent 
+ <HR Size=1>

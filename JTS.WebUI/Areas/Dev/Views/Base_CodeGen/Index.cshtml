@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "代码生成器页面";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section head{
+    <style>
+    </style>
+}
+
+@section scripts{
+    @*<script src="~/Areas/Sys/ViewJS/Base_SysLog.js?v=@ViewBag.ts"></script>*@
+    <script type="text/javascript">
+        var model_string = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))';
+        //km.model = JSON.parse(model_string);
+    </script>
+}
+
+<div class="easyui-layout" data-options="fit:true" style=" overflow:hidden;">
+    <div id="main_panel" data-options="region: 'center',border:false" style="padding: 0px;">
+        @*<table id="maingrid"></table>*@
+      <div style=" width:300px; height:200px; margin:100px auto; font-size:30px; font-weight:bold; color:blue; text-align:center">测试页面</div>  
+    </div>
+    @*<div id="toolbar1" style=" padding:3px 5px; border-bottom:none">
+            <input id="keyword" class="easyui-textbox" data-options="prompt:'关键字搜索',value:''" style="width:200px; height:26px" />
+            <a id="btn_search" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-standard-zoom',plain:true" onclick="km.maingrid.do_search();">搜索</a>
+        </div>*@
+</div>

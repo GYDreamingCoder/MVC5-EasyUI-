@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "系统角色页面";
+    Layout = "~/Views/Shared/_Layout.cshtml";/*权限按钮页面*/
+}
+
+@section head{
+    <style type="text/css">
+        #toolbar1, #toolbar2 { border-bottom: none; }
+    </style>
+}
+
+@section scripts{
+    <script src="~/Areas/Sys/ViewJS/Base_Role.js?v=@ViewBag.ts"></script>
+    <script type="text/javascript">
+        var model_string = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))';
+        km.model = JSON.parse(model_string);
+    </script>
+}
+
+@*页面布局 可以自定义 yxz 14:42 2015-11-14*@
+<div class="easyui-layout" data-options="fit:true" style="overflow:hidden;">
+    <div id="north_panel" data-options="region:'north',border:false">
+        <div id="km_toolbar" class="km_toolbar">
+            @*<a id="toolbar_refresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-arrow-refresh'" title="刷新" onclick="km.toolbar.do_refresh();">刷新</a>
+            <a id="toolbar_add" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-add'" title="新增" onclick="km.toolbar.do_add();">新增</a>
+            <a id="toolbar_edit" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-pencil'" title="编辑" onclick="km.toolbar.do_edit();">编辑</a>
+            <a id="toolbar_delete" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-delete'" title="删除" onclick="km.toolbar.do_delete();">删除</a>*@
+            <a id="toolbar_rolerights" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-key'" title="角色权限" onclick="km.toolbar.do_rolerights();">角色权限</a>
+        </div>
+    </div>
+    <div id="main-panel" data-options="region: 'center',border:true" style="padding: 0px; border-top: none; border-left: none; border-bottom: none; ">
+        <table id="maingrid"></table>
+    </div>
+    <div id="east-panel" data-options="region: 'east',title:'角色用户',border:true,split:true" style=" width: 40%; border-bottom: none;">
+        <table id="roleusergrid"></table>
+    </div>
+</div>
+<div id="dd_user" style="min-height:300px"><table id="usergrid"></table></div>
+
+<div id="toolbar1">
+    <a id="btn_add_roleuser" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-standard-user-add',plain:true" onclick="km.roleusergrid.add_user();">添加用户</a>
+    <a id="btn_remove_roleuser" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-standard-user-delete',plain:true" onclick="km.roleusergrid.remove_user();">移除勾选用户</a>
+</div>
+<div id="toolbar2">
+    <input id="search_key" class="easyui-textbox" data-options="iconCls:'',prompt:'关键字搜索',value:''" style="width:220px; height:26px" />
+    <a id="btn_search_user" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-standard-user-delete',plain:true" onclick="km.usergrid.search_user();">搜索</a>
+</div>
+ 
+<script id="tpl_add" type="text/html">
+    <div id="adddialog">
+        <form id="formadd" method="post" style="background: #fff">
+            <table cellpadding="5" cellspacing="1" border="0" style=" width:100%;background: #fff">
+                <tr>
+                    <td>角色代码</td>
+                    <td>
+                        <input id="TPL_RoleCode" name="RoleCode" class="easyui-textbox" data-options="required:true,value:''" style="width: 250px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>按角色名称</td>
+                    <td>
+                        <input id="TPL_RoleName" name="RoleName" class="easyui-textbox" data-options="required:true,value:''" style="width: 250px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>角色类型</td>
+                    <td>
+                        @*//角色类型：0=未定义 1=系统角色 2=业务角色 3=其他 （系统角色不允许编辑和删除）*@
+                        <select id="TPL_RoleType" name="RoleType" class="easyui-combobox" data-options="editable:false,hasDownArrow:false,panelHeight:60" style="width:250px;">
+                            <option value="2">业务角色</option>
+                            <option value="3">其他</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>排序</td>
+                    <td>
+                        <input id="TPL_Sort" name="Sort" type="text" class="easyui-numberbox" value="100" data-options="min:100,max:999" style="width: 250px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>启用</td>
+                    <td>
+                        <select id="TPL_Enabled" name="Enabled" class="easyui-combobox" data-options="editable:false,panelHeight:60" style="width:250px;">
+                            <option value="0">禁用</option>
+                            <option value="1">启用</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>备注</td>
+                    <td>
+                        <input id="TPL_Remark" name="Remark" class="easyui-textbox" data-options="required:false" style="width: 250px" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+</script>

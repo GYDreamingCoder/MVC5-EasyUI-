@@ -1,0 +1,149 @@
+﻿@{
+    ViewBag.Title = "系统模块菜单页面";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head{
+    <style type="text/css">
+        #toolbar1, #toolbar2 { border-bottom: none; font-weight:bold }
+    </style>
+}
+
+@section scripts{
+    <script src="~/Scripts/03jeasyui/icons/icons.all.js"></script>
+    <script src="~/Areas/Sys/ViewJS/Base_Menu.js?v=@ViewBag.ts"></script>
+    <script type="text/javascript">
+        var model_string = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))';
+        km.model = JSON.parse(model_string);
+    </script>
+}
+
+<div class="easyui-layout" data-options="fit:true" style="overflow:hidden;">
+    <div id="north_panel" data-options="region:'north',border:false">
+        <div id="km_toolbar" class="km_toolbar">
+            <a id="toolbar_refresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-arrow-refresh'" title="刷新" onclick="km.toolbar.do_refresh();">刷新</a>
+            <a id="toolbar_add" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-add'" title="新增" onclick="km.toolbar.do_add();">新增</a>
+            <a id="toolbar_edit" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-pencil'" title="编辑" onclick="km.toolbar.do_edit();">编辑</a>
+            <a id="toolbar_delete" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-delete'" title="删除" onclick="km.toolbar.do_delete();">删除</a>
+        </div>
+    </div>
+    <div id="main_panel" data-options="region: 'center',border:true" style="padding: 0px; border-top: none; border-left: none; border-bottom: none; ">
+        <table id="maingrid"></table>
+    </div>
+    <div id="east_panel" data-options="region: 'east',title:'菜单按钮',border:true,split:true" style=" width: 450px; border-bottom: none;">
+        <table id="menubuttongrid"></table>
+    </div>
+</div>
+<div id="dd_button" style="min-height:300px"><table id="buttongrid"></table></div>
+
+<div id="toolbar1">
+    <a id="btn_add_menubutton" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-standard-user-add',plain:true" onclick="km.menubuttongrid.add_button();">添加按钮</a>
+    <a id="btn_remove_menubutton" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-standard-user-delete',plain:true" onclick="km.menubuttongrid.remove_button();">移除勾选按钮</a>
+    <a id="btn_save_menubutton" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-standard-user-delete',plain:true" onclick="km.menubuttongrid.save_button();">保存按钮顺序和显示文本</a>
+</div>
+<div id="toolbar2">
+    <input id="search_key" class="easyui-textbox" data-options="iconCls:'',prompt:'关键字搜索',value:''" style="width:220px; height:26px" />
+    <a id="btn_search_button" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-standard-zoom',plain:true" onclick="km.buttongrid.search_button();">搜索</a>
+</div>
+
+<script id="tpl_add" type="text/html">
+    <div id="adddialog">
+        <form id="formadd" method="post" style="background: #fff">
+            <table cellpadding="5" cellspacing="1" border="0" style=" width:100%;background: #fff">
+                <tr>
+                    <td>菜单代码</td>
+                    <td>
+                        <input id="TPL_MenuCode" name="MenuCode" class="easyui-textbox" data-options="required:true,value:''" style="width: 250px" />
+                    </td>
+                    <td>父级菜单</td>
+                    <td>
+                        <input id="TPL_ParentMenuCode" name="ParentMenuCode" class="easyui-combotree" data-options="required:true,editable:false,hasDownArrow:false,value:''" style="width: 250px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>菜单名称</td>
+                    <td>
+                        <input id="TPL_MenuName" name="MenuName" class="easyui-textbox" data-options="required:true,value:''" style="width: 250px" />
+                    </td>
+                    <td>菜单Url</td>
+                    <td>
+                        <input id="TPL_Url" name="Url" class="easyui-textbox" data-options="required:true,value:''" style="width: 250px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>图标Class</td>
+                    <td>
+                        <input id="TPL_IconClass" name="IconClass" class="easyui-textbox" data-options="required:true,value:''" style="width: 230px" />
+                        <span id="span_icon" class="icon" title=""></span>
+                    </td>
+                    <td>图标Url</td>
+                    <td>
+                        <input id="TPL_IconUrl" name="IconUrl" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>菜单类型</td>
+                    <td>
+                        @*//菜单类型：0=未定义 1=目录 2=页面 7=备用1 8=备用2 9=备用3   *@
+                        <select id="TPL_MenuType" name="MenuType" class="easyui-combobox" data-options="editable:false,hasDownArrow:false,panelHeight:120" style="width:250px;">
+                            <option value="1">目录</option>
+                            <option value="2">页面</option>
+                            <option value="7">备用1</option>
+                            <option value="8">备用2</option>
+                            <option value="9">备用3</option>
+                        </select>
+                    </td>
+                    <td>按钮模式</td>
+                    <td>
+                        @*//按钮模式：0=未定义 1=动态按钮 2=静态按钮 3=无按钮  *@
+                        <select id="TPL_ButtonMode" name="ButtonMode" class="easyui-combobox" data-options="editable:false,hasDownArrow:false,panelHeight:80" style="width:250px;">
+                            <option value="1">动态按钮</option>
+                            <option value="2">静态按钮</option>
+                            <option value="3">无按钮</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>排序</td>
+                    <td>
+                        <input id="TPL_Sort" name="Sort" type="text" class="easyui-numberbox" value="100" data-options="value:0" style="width: 250px" />
+                    </td>
+                    <td>启用</td>
+                    <td>
+                        <select id="TPL_Enabled" name="Enabled" class="easyui-combobox" data-options="editable:false,hasDownArrow:false,panelHeight:60" style="width:250px;">
+                            <option value="0">禁用</option>
+                            <option value="1">启用</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>备注</td>
+                    <td colspan="3">
+                        <input id="TPL_Remark" name="Remark" class="easyui-textbox" data-options="required:false,multiline:true,height:50" style="width: 570px" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+</script>
+
+<!-- 模板2开始，可以使用script（type设置为text/html）来存放模板片段，并且用id标示 -->
+<script id="tpl_icon" type="text/html">
+    <div style="width: 100%; height: auto; margin: 0 auto; padding: 0; overflow:hidden">
+        <div style="width: 100%; height: 30px; line-height: 30px; background: #f2f2f2; border-bottom: 1px solid #ccc; ">
+            <div id="span_selected_icon" class="icon iconbox" style="border: none; width: 18px; height: 18px; padding: 0; margin-top: 5px; margin-left: 20px; "></div><b id="icontext"></b>
+            <div style=" float: right; margin-right:20px"><%=title%>，共有<%=list.length%>个元素</div>
+        </div>
+        <%if(list.length>1) { %>
+        <div id="div_icons" style="width: 100%; height: auto; margin: 0 auto;  padding: 10px 0px; overflow-y: auto; ">
+            <%for(var i=0;i<list.length;i++){%>
+                <span id="<%=list[i].iconCls%>" class="icon <%=list[i].iconCls%> iconbox" title="<%=list[i].iconCls%>"></span>
+                <%}%>
+        </div>
+        <%}else{%>
+        <h2>没有数据</h2>
+        <%}%>
+    </div>
+</script>
+<!-- 模板2结束 -->

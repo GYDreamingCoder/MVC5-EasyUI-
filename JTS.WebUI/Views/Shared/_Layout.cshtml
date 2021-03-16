@@ -1,0 +1,59 @@
+﻿@{
+    Layout = null;
+    ViewBag.EasyuiVersion = JTS.Utils.CookiesUtil.GetCookies("EasyuiVersion");
+    ViewBag.EasyuiTheme = JTS.Utils.CookiesUtil.GetCookies("EasyuiTheme");
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+    <title>@ViewBag.Title</title>
+    @*@Styles.Render("~/common/css")
+    @Styles.Render("~/easyui/css")
+    @Scripts.Render("~/easyui/js")
+    @Scripts.Render("~/common/js")*@
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" />
+    <!--加载共通CSS-->
+    <link href="~/Content/css/base.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/btns/cssbtn.css" rel="stylesheet" />
+    <!--加载easyui CSS-->
+    <link href="~/Scripts/03jeasyui/jquery-easyui-@ViewBag.EasyuiVersion/themes/@ViewBag.EasyuiTheme/easyui.css" rel="stylesheet" />
+    <link href="~/Scripts/03jeasyui/jquery-easyui-@ViewBag.EasyuiVersion/themes/icon.css" rel="stylesheet" />
+    <link href="~/Content/themes/@ViewBag.EasyuiTheme/style.css" rel="stylesheet" />
+    <!--加载easyui扩展图标库CSS-->
+    <link href="~/Scripts/03jeasyui/icons/icon-all.css" rel="stylesheet" />
+    <link href="~/Scripts/02jquery/ztree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
+    <link href="~/Scripts/02jquery/jnotify/jquery.jnotify.css" rel="stylesheet" />
+    <link href="~/Scripts/02jquery//showloading/showLoading.css" rel="stylesheet" type="text/css" /> 
+    <!--加载easyui脚本库-->
+    <script src="~/Scripts/03jeasyui/jquery-easyui-@ViewBag.EasyuiVersion/jquery.min.js"></script>
+    <script src="~/Scripts/03jeasyui/jquery-easyui-@ViewBag.EasyuiVersion/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/03jeasyui/jquery-easyui-@ViewBag.EasyuiVersion/locale/easyui-lang-zh_CN.js"></script>
+    <script src="~/Scripts/03jeasyui/jeasyui_extend/jeasyui.extend.js?v=@ViewBag.ts"></script>
+    <script src="~/Scripts/03jeasyui/jeasyui_extend/jeasyui.tabs.extend.js?v=@ViewBag.ts"></script>
+    <!--加载公共脚本库-->
+    <script src="~/Scripts/01core/BaiduTemplate.js"></script>
+    <script src="~/Scripts/01core/utils.js"></script>
+    <script src="~/Scripts/01core/json2.min.js"></script>
+    <script src="~/Scripts/02jquery/jquery.cookie.js"></script>
+    <script src="~/Scripts/02jquery/jqext.yxz.js"></script>
+    <script src="~/Scripts/02jquery/jqext.util.js"></script>
+    <script src="~/Scripts/02jquery/layer/layer.js"></script>
+    <script src="~/Scripts/02jquery/jnotify/jquery.jnotify.js"></script>
+    <script src="~/Scripts/02jquery/showloading/jquery.showLoading.min.js"></script>
+    <script src="~/Scripts/02jquery/ztree/js/jquery.ztree.all-3.5.min.js"></script>
+    <script src="~/Scripts/01core/common.js?v=@ViewBag.ts"></script>
+    <link href="~/Content/css/plugin_extend.css" rel="stylesheet" />
+    @RenderSection("head", required: false) 
+</head>
+<body>
+    @RenderBody()    
+    @RenderSection("scripts", required: false)
+ 
+</body>
+</html>

@@ -1,0 +1,85 @@
+﻿@{
+    Layout = null;
+}
+@*<!DOCTYPE html><html lang="zh"> 使用这个出现了滚动条*@
+@*<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">*@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <!--加载共通CSS-->
+    <link href="~/Content/css/base.css?v=1" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/btns/cssbtn.css" rel="stylesheet" />
+    <!--加载easyui CSS-->
+    <link href="~/Scripts/03jeasyui/jquery-easyui-@ViewBag.EasyuiVersion/themes/@ViewBag.EasyuiTheme/easyui.css" rel="stylesheet" />
+    <link href="~/Scripts/03jeasyui/jquery-easyui-@ViewBag.EasyuiVersion/themes/icon.css" rel="stylesheet" />
+    <link href="~/Content/themes/@ViewBag.EasyuiTheme/style.css" rel="stylesheet" />
+    <!--加载easyui扩展图标库CSS-->
+    <link href="~/Scripts/03jeasyui/icons/icon-all.css" rel="stylesheet" />
+    <link href="~/Scripts/02jquery/ztree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
+    <link href="~/Scripts/02jquery/jnotify/jquery.jnotify.css" rel="stylesheet" />
+    <link href="~/Scripts/02jquery//showloading/showLoading.css" rel="stylesheet" type="text/css" />
+
+    <!--加载easyui脚本库-->
+    <script src="~/Scripts/03jeasyui/jquery-easyui-@ViewBag.EasyuiVersion/jquery.min.js"></script>
+    <script src="~/Scripts/03jeasyui/jquery-easyui-@ViewBag.EasyuiVersion/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/03jeasyui/jquery-easyui-@ViewBag.EasyuiVersion/locale/easyui-lang-zh_CN.js"></script>
+    <script src="~/Scripts/03jeasyui/jeasyui_extend/jeasyui.extend.js?v=@ViewBag.ts"></script>
+    <script src="~/Scripts/03jeasyui/jeasyui_extend/jeasyui.tabs.extend.js?v=@ViewBag.ts"></script>
+    <script>
+        function closes() {
+            $("#pageLoading").fadeOut("fast", function () { $(this).remove(); });
+        }
+        var pc;
+        $.parser.onComplete = function () {
+            if (pc) clearTimeout(pc);
+            pc = setTimeout(closes, 1000);
+            closes();
+        }
+    </script>
+    <link href="~/Content/css/plugin_extend.css" rel="stylesheet" />
+    <style>
+    </style>
+
+</head>
+<body id="homebody" class="easyui-layout">
+    <div id='pageLoading' style="position: absolute; z-index: 1000; top: 0px; left: 0px; width: 100%; height: 100%; background: #545669; text-align: center; opacity: 0.8; filter: alpha(opacity=80);">
+        <div style="z-index: 3; width: auto; height: 16px; line-height: 16px; position: absolute; top: 50%; left: 50%; margin-top: -20px; margin-left: -92px; border: 2px dashed #75186D; padding: 12px 5px 10px 30px; background: #ffffff url('/Scripts/03jeasyui/jeasyui_extend/images/ajax-loader.gif') no-repeat scroll 5px center;">
+            页面拼命加载中,请稍后 ...
+        </div>
+    </div>
+    <noscript>
+        <div class="noscript">
+            <img src="~/Content/images/noscript.gif" alt="抱歉，请开启脚本支持！" />
+        </div>
+    </noscript>
+    @Html.Partial("_IndexPartial")
+
+    <div id="notity"></div>
+    <input id="hd_navigation" type="hidden" value="@ViewBag.Settings["navigation"]" />
+
+    <!--加载公共脚本库-->
+    <script src="~/Scripts/01core/BaiduTemplate.js"></script>
+    <script src="~/Scripts/01core/utils.js"></script>
+    <script src="~/Scripts/01core/json2.min.js"></script>
+    <script src="~/Scripts/02jquery/jquery.cookie.js"></script>
+    <script src="~/Scripts/02jquery/jqext.yxz.js"></script>
+    <script src="~/Scripts/02jquery/layer/layer.js"></script>
+
+    <script src="~/Scripts/02jquery/jnotify/jquery.jnotify.js"></script>
+    <script src="~/Scripts/02jquery/showloading/jquery.showLoading.min.js"></script>
+    <script src="~/Scripts/02jquery/ztree/js/jquery.ztree.all-3.5.min.js"></script>
+    <script src="~/Scripts/01core/common.js?v=@ViewBag.ts"></script>
+    <script src="~/Scripts/app.index.js?v=@ViewBag.ts"></script>
+    <script type="text/javascript">
+        wrapper.model = null;
+        var model_string = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))';
+        wrapper.model = JSON.parse(model_string);
+        $(wrapper.init);
+    </script>
+</body>
+</html>

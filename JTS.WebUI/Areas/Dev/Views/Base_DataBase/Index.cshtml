@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "数据库管理页面";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head{
+    <style type="text/css">
+        #toolbar1, #toolbar2 { border-bottom: none; }
+    </style>
+}
+
+@section scripts{
+    <script src="~/Areas/Dev/ViewJS/Base_DataBase.js?v=@ViewBag.ts"></script>
+    <script type="text/javascript">
+        var model_string = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))';
+        km.model = JSON.parse(model_string);
+    </script>
+}
+
+
+<div class="easyui-layout" data-options="fit:true" style="overflow:hidden;">
+    <div id="north_panel" data-options="region:'north',border:false">
+        <div id="km_toolbar" class="km_toolbar"></div>
+    </div>
+    <div id="west-panel" data-options="region: 'west',title:'表信息',border:true,split:true" style=" width: 350px; border-bottom: none; border-left: none;">
+        <table id="maingrid"></table>
+    </div>
+    <div id="main-panel" data-options="region: 'center',title:'列信息 ',border:true" style="padding: 0px; border-top: none;  border-bottom: none; ">
+        <table id="columngrid"></table>
+    </div>
+</div>

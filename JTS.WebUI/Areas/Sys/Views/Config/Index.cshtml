@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "个性设置";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head{
+<link href="~/Content/css/btns/cssbtn.css" rel="stylesheet" />
+    <style type="text/css">
+        input { width: 124px; }
+        h1 { font-size: 18px; font-family: 'Microsoft YaHei'; padding: 0px; padding-left: 20px; color: #A2A2A2; margin-bottom: 5px; }
+        ul { list-style: none; }
+        li div { width: 140px; float: left; text-align: right; padding-right: 10px; }
+        .c { margin: 5px; border-top: 2px solid #1382CE; margin-bottom: 15px; padding-top: 10px; }
+    </style>
+}
+
+@section scripts{
+<script src="~/Areas/Sys/ViewJS/Config.js?v=@ViewBag.ts"></script>
+    <script type="text/javascript">
+        km.model = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))
+    </script>
+}
+<div style="margin:10px;">
+    <h1>皮肤设置</h1>
+    <div class="c">
+        <ul>
+            <li>
+                <div>皮肤：</div>
+                <input id="txt_theme"/>
+            </li>
+        </ul>
+    </div>
+
+    <h1>菜单设置</h1>
+    <div class="c">
+        <ul>
+            <li>
+                <div>表现方式：</div>
+                <input id="txt_menustyle"   /> 
+            </li>
+        </ul>
+    </div>
+    <h1>数据表格设置</h1>
+    <div class="c">
+        <ul>
+            <li>
+                <div>每页记录数：</div> 
+                <input id="txt_grid_rows" /> 
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div style="margin:140px;width:160px; margin-top:40px; font-family:'Microsoft YaHei'">
+    <a id="btn_save_config" href="javascript:void(0)" class="cssbtn cssbtn_size16 cssbtn_blue"  >保存设置</a>
+</div>

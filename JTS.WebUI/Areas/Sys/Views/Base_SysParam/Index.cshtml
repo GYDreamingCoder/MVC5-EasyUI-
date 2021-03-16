@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "系统参数页面";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section head{
+    <style></style>
+}
+
+@section scripts{
+    <script src="~/Areas/Sys/ViewJS/Base_SysParam.js?v=@ViewBag.ts"></script>
+    <script type="text/javascript">
+        var model_string = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))';
+        km.model = JSON.parse(model_string);
+    </script>
+}
+
+<div class="easyui-layout" data-options="fit:true" style=" overflow:hidden;">
+    <div id="north_panel" data-options="region:'north',border:false">
+        <div id="km_toolbar" class="km_toolbar">
+            <a id="toolbar_refresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-arrow-refresh'" title="刷新" onclick="km.toolbar.do_refresh();">刷新</a>
+            <a id="toolbar_add" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-add'" title="新增" onclick="km.toolbar.do_add();">新增</a>
+            <a id="toolbar_edit" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-pencil'" title="编辑" onclick="km.toolbar.do_edit();">编辑</a>
+            <a id="toolbar_delete" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-delete'" title="删除" onclick="km.toolbar.do_delete();">删除</a>
+        </div>
+    </div>
+    <div id="main-panel" data-options="region: 'center',border:false">
+        <table id="maingrid"></table>
+    </div>
+</div>
+
+@*定义对话框模板*@
+<script id="tpl_add" type="text/html">
+    <div id="adddialog">
+        <form id="formadd" method="post">
+            <table cellpadding="3">
+                <tr>
+                    <td>参数代码</td>
+                    <td>
+                        <input id="TPL_ParamCode" name="ParamCode" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>参数值</td>
+                    <td>
+                        <input id="TPL_ParamValue" name="ParamValue" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>允许编辑</td>
+                    <td>
+                        <select id="TPL_AllowEdit" name="AllowEdit" class="easyui-combobox" data-options="editable:false,hasDownArrow:false,panelHeight:60" style="width:250px;">
+                            <option value="1">允许编辑</option>
+                            <option value="0">禁止编辑</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>排序</td>
+                    <td>
+                        <input id="TPL_Sort" name="Sort" type="text" class="easyui-numberbox" value="100" data-options="min:1,max:999" style="width: 250px" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>启用</td>
+                    <td>
+                        <select id="TPL_Enabled" name="Enabled" class="easyui-combobox" data-options="editable:false,panelHeight:60" style="width:250px;">
+                            <option value="0">禁用</option>
+                            <option value="1">启用</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>备注</td>
+                    <td>
+                        <input id="TPL_Remark" name="Remark" class="easyui-textbox" data-options="required:false" style="width: 250px" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</script>

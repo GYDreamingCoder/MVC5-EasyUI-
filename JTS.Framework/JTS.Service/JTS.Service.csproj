@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B891D679-C90E-4A6A-831B-C6F7FD2F1C8F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JTS.Service</RootNamespace>
+    <AssemblyName>JTS.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentData, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\FluentData.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="102-Basic\Base_AreaService.cs" />
+    <Compile Include="103-Sys\Base_ButtonService.cs" />
+    <Compile Include="103-Sys\Base_CodeRuleService.cs" />
+    <Compile Include="102-Basic\Base_CompanyService.cs" />
+    <Compile Include="102-Basic\Base_DepartmentService.cs" />
+    <Compile Include="103-Sys\Base_DictItemService.cs" />
+    <Compile Include="103-Sys\Base_DictService.cs" />
+    <Compile Include="103-Sys\Base_MenuButtonService.cs" />
+    <Compile Include="103-Sys\Base_MenuService.cs" />
+    <Compile Include="103-Sys\Base_RoleMenuButtonService.cs" />
+    <Compile Include="103-Sys\Base_RoleMenuService.cs" />
+    <Compile Include="103-Sys\Base_RoleService.cs" />
+    <Compile Include="103-Sys\Base_SysLogService.cs" />
+    <Compile Include="101-Dev\Base_DataBaseService.cs" />
+    <Compile Include="103-Sys\Base_SysParamService.cs" />
+    <Compile Include="103-Sys\Base_UserRoleService.cs" />
+    <Compile Include="103-Sys\Base_UserService.cs" />
+    <Compile Include="103-Sys\Base_UserSettingService.cs" />
+    <Compile Include="AppCacheManage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\JTS.Entity\JTS.Entity.csproj">
+      <Project>{5c0141fc-13bb-423b-92f2-05c09ab5a15d}</Project>
+      <Name>JTS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JTS.Core\JTS.Core.csproj">
+      <Project>{7211de8c-72b7-47f5-9d44-435bd1537d7d}</Project>
+      <Name>JTS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JTS.Utils\JTS.Utils.csproj">
+      <Project>{abad1096-2138-421a-ad5c-d876ba82f1f1}</Project>
+      <Name>JTS.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

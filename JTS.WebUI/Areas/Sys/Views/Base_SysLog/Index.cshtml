@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "系统日志页面";
+    Layout = "~/Views/Shared/_Layout.cshtml";/*权限按钮页面*/
+}
+
+@section head{
+    <style>
+    </style>
+}
+
+@section scripts{
+    <script src="~/Areas/Sys/ViewJS/Base_SysLog.js?v=@ViewBag.ts"></script>
+    <script type="text/javascript">
+        var model_string = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))';
+        km.model = JSON.parse(model_string);
+    </script>
+}
+<input id="hd_model" type="hidden" value="@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))" />
+@*页面布局 可以自定义 yxz 14:42 2015-11-14*@
+<div class="easyui-layout" data-options="fit:true" style=" overflow:hidden;">
+    <div id="main-panel" data-options="region: 'center',border:false" style="padding: 0px;">
+        <table id="maingrid"></table>
+    </div>
+    <div id="toolbar1" style=" padding:3px 5px; border-bottom:none">
+        <input id="keyword" class="easyui-textbox" data-options="prompt:'关键字搜索',value:''" style="width:200px; height:26px" />
+        <a id="btn_search" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-standard-zoom',plain:true" onclick="km.maingrid.do_search();">搜索</a>
+    </div>
+</div>

@@ -1,0 +1,260 @@
+﻿@{
+    ViewBag.Title = "系统角色页面";
+    Layout = "~/Views/Shared/_Layout.cshtml";/*权限按钮页面*/
+}
+
+@section head{
+    <style type="text/css">
+        #toolbar1, #toolbar2 { border-bottom: none; }
+        .table_content { width: 100%; background: #fff; border: none; }
+            .table_content td { border-bottom: 1px solid #ccc; }
+                .table_content td.td_title { width: 90px; text-align: center; font-size: 12px; font-weight: bold; background: #fafafa; border-right: 1px solid #ccc; }
+        .textbox, .textbox-text { border: none; border-radius: 0px; box-shadow: none; margin: 0px; padding: 0px; }
+        .textbox-fucused { box-shadow: none; }
+    </style>
+}
+
+@section scripts{
+    <script src="~/Areas/Sys/ViewJS/Base_User.js?v=@ViewBag.ts"></script>
+    <script type="text/javascript">
+        var model_string = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))';
+        km.model = JSON.parse(model_string);
+    </script>
+}
+
+<div class="easyui-layout" data-options="fit:true" style="overflow:hidden;">
+    <div id="north_panel" data-options="region:'north',border:false">
+        <div id="km_toolbar" class="km_toolbar">
+            <a id="toolbar_refresh" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-arrow-refresh'" title="刷新" onclick="km.toolbar.do_refresh();">刷新</a>
+            <a id="toolbar_add" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-add'" title="新增" onclick="km.toolbar.do_add();">新增</a>
+            <a id="toolbar_edit" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-pencil'" title="编辑" onclick="km.toolbar.do_edit();">编辑</a>
+            <a id="toolbar_delete" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-delete'" title="删除" onclick="km.toolbar.do_delete();">删除</a>
+            <a id="toolbar_audit" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-tick'" title="审核" onclick="km.toolbar.do_audit();">审核</a>
+            <a id="toolbar_resetpwd" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-standard-lock-edit'" title="密码重置" onclick="km.toolbar.do_resetpwd();">密码重置</a>
+        </div>
+        <div id="km_toolbar_2" class="km_toolbar" style="display:none">
+            <a id="toolbar_delete" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-undo'" title="取消" onclick="km.toolbar.do_undo();">取消</a>
+            <a id="toolbar_save" href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'" title="保存" onclick="km.toolbar.do_save();">保存</a>
+        </div>
+    </div>
+    <div id="west_panel" data-options="region: 'west',title:'',border:true,split:true" style="width: 50%;border-bottom: none; border-left: none;  ">
+        <table id="maingrid"></table>
+    </div>
+    <div id="main_panel" data-options="region: 'center',title:'',border:true" style="padding: 0px; border-bottom: none; ">
+        <div id="user_tabs" class="easyui-tabs" data-options="fit:true,border:false">
+            <div title="基本信息" data-options="iconCls:'icon-standard-user'">
+                <div id="div_content">
+                    <form id="form_content" class="form_content" method="post">
+                        <table id="table_content" class="table_content" cellpadding="3" cellspacing="0" border="0">
+                            <tr>
+                                <td class="td_title">启用</td>
+                                <td>
+                                    <select id="TPL_Enabled" name="Enabled" class="easyui-combobox" data-options="editable:false,hasDownArrow:false,panelHeight:90" style="width:250px;">
+                                        @*<option value="">&nbsp;&nbsp;</option>*@
+                                        <option value="0">禁用</option>
+                                        <option value="1">启用</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">是否单点登录</td>
+                                <td>
+                                    <select id="TPL_IsSingleLogin" name="IsSingleLogin" class="easyui-combobox" data-options="editable:false,hasDownArrow:false,panelHeight:90" style="width:250px;">
+                                        @*<option value="">&nbsp;&nbsp;</option>*@
+                                        <option value="0">否</option>
+                                        <option value="1">是</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">类型</td>
+                                <td>
+                                    @*//用户类型：0=未定义 1=管理员 3=普通用户 5=微信用户 7=ERP用户 9=OA用户  99=其他  *@
+                                    <select id="TPL_UserType" name="UserType" class="easyui-combobox" data-options="editable:false,hasDownArrow:false,panelHeight:200" style="width:250px;">
+                                        @*<option value=""> &nbsp;&nbsp;</option>*@
+                                        <option value="1">管理员</option>
+                                        <option value="3">普通用户</option>
+                                        <option value="5">微信用户</option>
+                                        <option value="7">ERP用户</option>
+                                        <option value="9">OA用户</option>
+                                        <option value="99">其他</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">所属部门</td>
+                                <td>
+                                    <input id="TPL_DepartmentCode" name="DepartmentCode" class="easyui-combobox" data-options="editable:false,hasDownArrow:false" style="width:250px;" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">姓名</td>
+                                <td>
+                                    <input id="TPL_UserId" name="UserId" type="hidden" value="" />
+                                    <input id="TPL_RealName" name="RealName" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">姓名拼音</td>
+                                <td>
+                                    <input id="TPL_Spell" name="Spell" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">登录账号</td>
+                                <td>
+                                    <input id="TPL_UserCode" name="UserCode" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">性别</td>
+                                <td>
+                                    <select id="TPL_Sex" name="Sex" class="easyui-combobox" data-options="editable:false,hasDownArrow:false,panelHeight:90" style="width:250px;">
+                                        @*<option value=""> &nbsp;&nbsp;</option>*@
+                                        <option value="男">男</option>
+                                        <option value="女">女</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">手机</td>
+                                <td>
+                                    <input id="TPL_Phone" name="Phone" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">邮件</td>
+                                <td>
+                                    <input id="TPL_Email" name="Email" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">QQ号码</td>
+                                <td>
+                                    <input id="TPL_QQ" name="QQ" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">排序</td>
+                                <td>
+                                    <input id="TPL_Sort" name="Sort" type="text" class="easyui-numberbox" value="1" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title" style=" height:55px">备注</td>
+                                <td>
+                                    <input id="TPL_Remark" name="Remark" class="easyui-textbox" data-options="required:false,multiline:true,height:50" style="width: 250px" />
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div title="其他信息" data-options="iconCls:'icon-standard-user-gray'">
+                <div id="div_content_other">
+                    <form id="form_content_other" class="form_content" method="post">
+                        <table id="table_content_other" class="table_content" cellpadding="3" cellspacing="0" border="0">
+                            <tr>
+                                <td class="td_title">是否在线</td>
+                                <td>
+                                    <select id="TPL_IsOnline" name="IsOnline" class="easyui-combobox" data-options="editable:false,hasDownArrow:false,panelHeight:90" style="width:250px;">
+                                        <option value="2"> &nbsp;&nbsp;</option>
+                                        <option value="1">是</option>
+                                        <option value="0">否</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">最后登录时间</td>
+                                <td>
+                                    <input id="TPL_LoginTime" name="LoginTime" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">最后登录IP地址</td>
+                                <td>
+                                    <input id="TPL_LoginIP" name="LoginIP" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="td_title">最后登录城市</td>
+                                <td>
+                                    <input id="TPL_LoginCity" name="LoginCity" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">最后修改密码时间</td>
+                                <td>
+                                    <input id="TPL_LastChangePassword" name="LastChangePassword" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">是否审核</td>
+                                <td>
+                                    <select id="TPL_IsAudit" name="IsAudit" class="easyui-combobox" data-options="editable:false,hasDownArrow:false,panelHeight:90" style="width:250px;">
+                                        <option value="2"> &nbsp;&nbsp;</option>
+                                        <option value="1">是</option>
+                                        <option value="0">否</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">审核人</td>
+                                <td>
+                                    <input id="TPL_AuditBy" name="AuditBy" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">审核时间</td>
+                                <td>
+                                    <input id="TPL_AuditTime" name="AuditTime" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">创建人</td>
+                                <td>
+                                    <input id="TPL_AddBy" name="AddBy" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">创建时间</td>
+                                <td>
+                                    <input id="TPL_AddOn" name="AddOn" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">编辑人</td>
+                                <td>
+                                    <input id="TPL_EditBy" name="EditBy" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_title">编辑时间</td>
+                                <td>
+                                    <input id="TPL_EditOn" name="EditOn" class="easyui-textbox" data-options="value:''" style="width: 250px" />
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div title="用户角色" data-options="iconCls:'icon-standard-group'">
+                <table id="rolegrid"></table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="toolbar1">
+    <input id="keyword" class="easyui-textbox" data-options="prompt:'关键字搜索',value:''" style="border:1px solid #f2f2f2;width:200px; height:100%" />
+    <a id="btn_search" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-standard-zoom',plain:true" onclick="km.maingrid.search_data();">搜索</a>
+</div>
+    <div id="toolbar2">
+        <a id="btn_save_userrole" href="javascript:void(0);" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true" onclick="km.rolegrid.saveUserRoles();">保存用户角色</a>
+    </div>
+
+<script id="tpl_other" type="text/html">
+
+</script>

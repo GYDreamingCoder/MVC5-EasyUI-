@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "系统角色页面";
+    Layout = "~/Views/Shared/_Layout.cshtml";/*权限按钮页面*/
+}
+
+@section head{
+    <style type="text/css">
+        /*easyui-datagrid 样式重写*/
+        .datagrid-row-selected { background: #fff; color: #000; }
+        .datagrid-row-over,
+        .datagrid-header td.datagrid-header-over { background: #fff; color: #000; cursor: default; border: none; }
+
+        .datagrid-header td, .datagrid-body td, .datagrid-footer td { border-left:none;  }
+        .datagrid-header td { border: none; }
+    </style>
+}
+
+@section scripts{
+    <script src="~/Areas/Sys/ViewJS/Base_RoleMenuButton.js?v=@ViewBag.ts"></script>
+    <script type="text/javascript">
+        var model_string = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))';
+        km.model = JSON.parse(model_string);
+    </script>
+}
+
+<div class="easyui-layout" data-options="fit:true" style="overflow:hidden;">
+    <div id="north_panel" data-options="region:'north',border:false">
+        <div class="km_toolbar">
+            <a id="toolbar_refresh" href="javascript:void(0)" plain="true" class="easyui-linkbutton" icon="icon-standard-arrow-refresh" title="刷新" onclick="km.toolbar.do_refresh();">刷新</a>
+        </div>
+    </div>
+    <div id="main-panel" data-options="region: 'center',border:true" style="padding: 0px; border-top: none; border-left: none; border-bottom: none; ">
+        <table id="maingrid"></table>
+    </div>
+
+</div>
